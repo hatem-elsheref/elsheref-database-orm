@@ -29,6 +29,7 @@ class DB extends Database {
 
     public static function table($tableName,$primaryKey='id'){
         $database = (is_null(self::$databaseClass))?new Database(self::$databaseConnectionLink):self::$databaseClass;
+        $database->reset();
         $database->setTable($tableName);
         $database->setPrimaryKey($primaryKey);
         return $database;

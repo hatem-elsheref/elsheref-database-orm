@@ -98,10 +98,23 @@ class Database implements DatabaseInterface
         $this->sql = 'SELECT ' . $this->sql .' FROM ' . $this->table . ' '.$where;
     }
 
+    protected function reset(){
+        $this->sql = '';
+        $this->select = [];
+        $this->where = [];
+    }
+
     private function execute(){
         $this->endingTheSqlStatement();
         $this->statement = $this->connection->prepare($this->sql);
-        $this->statement->execute();
+
+        try {
+            $this->statement->execute();
+            return true;
+        }catch (Exception $exception){
+            echo '====== File '.$exception->getFile().' Line [ '.$exception->getLine().' ]====>'.$exception->getMessage().PHP_EOL;
+            return false;
+        }
     }
 
     public function where($column,$operation='=',$value='',$andOr=self::OPERATOR_AND){
@@ -110,6 +123,7 @@ class Database implements DatabaseInterface
 
         if (!empty($column) && (in_array(strtoupper($operation),self::ALLOWED_OPERATORS)))
             $this->where[]=[$column,strtoupper($operation),$value,$andOr];
+
         return $this;
     }
 
@@ -169,9 +183,8 @@ class Database implements DatabaseInterface
     public function get(){
         if (empty($this->sql))
              $this->select('*');
-
-        $this->execute();
-        return $this->statement->fetchAll();
+        if ($this->execute())
+            return $this->statement->fetchAll();
     }
 
     public function all()
@@ -184,8 +197,8 @@ class Database implements DatabaseInterface
         if (empty($this->sql))
            $this->select('*');
 
-        $this->execute();
-        return $this->statement->fetchObject();
+        if ($this->execute())
+            return $this->statement->fetchObject();
     }
 
     public function count()
@@ -214,6 +227,7 @@ class Database implements DatabaseInterface
         foreach ($data as $attributeName => $attributeValue)
             $this->statement->bindValue(":$attributeName",$attributeValue);
 
+        $this->sql = '';
         return $this->statement->execute();
     }
 
@@ -227,6 +241,7 @@ class Database implements DatabaseInterface
         foreach ($data as $attributeName => $attributeValue)
             $this->statement->bindValue(":$attributeName",$attributeValue);
 
+        $this->sql = '';
         return $this->statement->execute();
     }
 
