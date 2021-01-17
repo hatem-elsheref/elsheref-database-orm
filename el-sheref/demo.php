@@ -1,7 +1,7 @@
 <?php
 
 // call the shefoo database files
-require_once 'el-sheref.php';
+require_once 'database.php';
 
 #####################################
 # how to use the package
