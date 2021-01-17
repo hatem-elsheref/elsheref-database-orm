@@ -1,0 +1,14 @@
+<?php
+
+class _temp_{
+    public function up(Blueprint $table,$tableName='__#__'){
+        $table->start($tableName);
+        $table->id();
+        // your table here ..
+        $table->created_at();
+        $table->end();
+    }
+    public function down(Blueprint $table,$tableName='__#__'){
+        $table->dropTable($tableName);
+    }
+}
