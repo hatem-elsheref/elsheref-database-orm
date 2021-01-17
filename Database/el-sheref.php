@@ -1,10 +1,10 @@
 <?php
 
-
-require_once 'Database/DatabaseInterface.php';
-require_once 'Database/Database.php';
-require_once 'Database/DB.php';
-require_once 'Database/configurations.php';
+require_once 'Core/DatabaseInterface.php';
+require_once 'Core/Database.php';
+require_once 'Core/Join.php';
+require_once 'Core/DB.php';
+require_once 'Core/configurations.php';
 
 
 try {

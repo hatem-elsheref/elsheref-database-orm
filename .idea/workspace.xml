@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0b43403e-92b4-4190-a4bf-aca49148953b" name="Default Changelist" comment="" />
+    <list default="true" id="0b43403e-92b4-4190-a4bf-aca49148953b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Database/Join.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Database/DB.php" beforeDir="false" afterPath="$PROJECT_DIR$/Database/DB.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Database/Database.php" beforeDir="false" afterPath="$PROJECT_DIR$/Database/Database.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Database/el-sheref.php" beforeDir="false" afterPath="$PROJECT_DIR$/Database/el-sheref.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo.php" beforeDir="false" afterPath="$PROJECT_DIR$/demo.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -10,7 +17,13 @@
   <component name="ComposerSettings">
     <execution />
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1n9jb9iYV8kaLlpmGqVjff7Hyw4" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -38,7 +51,8 @@
       <option name="presentableId" value="Default" />
       <updated>1610809269817</updated>
       <workItem from="1610809270833" duration="20313000" />
-      <workItem from="1610830084251" duration="7910000" />
+      <workItem from="1610830084251" duration="8158000" />
+      <workItem from="1610892241966" duration="4280000" />
     </task>
     <servers />
   </component>
@@ -54,17 +68,21 @@
       <screen x="0" y="25" width="1920" height="1055" />
     </state>
     <state x="555" y="214" width="800" height="673" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.25.1920.1055@0.25.1920.1055" timestamp="1610829677894" />
-    <state x="755" y="473" width="399" height="155" key="NewPhpFileDialog" timestamp="1610832288979">
+    <state x="706" y="249" width="497" height="602" key="NewPhpClassDialog" timestamp="1610892272355">
       <screen x="0" y="25" width="1920" height="1055" />
     </state>
-    <state x="755" y="473" width="399" height="155" key="NewPhpFileDialog/0.25.1920.1055@0.25.1920.1055" timestamp="1610832288979" />
+    <state x="706" y="249" width="497" height="602" key="NewPhpClassDialog/0.25.1920.1055@0.25.1920.1055" timestamp="1610892272355" />
+    <state x="755" y="473" width="399" height="155" key="NewPhpFileDialog" timestamp="1610897499849">
+      <screen x="0" y="25" width="1920" height="1055" />
+    </state>
+    <state x="755" y="473" width="399" height="155" key="NewPhpFileDialog/0.25.1920.1055@0.25.1920.1055" timestamp="1610897499849" />
     <state x="624" y="254" key="run.anything.popup" timestamp="1610813443616">
       <screen x="0" y="25" width="1920" height="1055" />
     </state>
     <state x="624" y="254" key="run.anything.popup/0.25.1920.1055@0.25.1920.1055" timestamp="1610813443616" />
-    <state x="623" y="257" width="672" height="678" key="search.everywhere.popup" timestamp="1610814969669">
+    <state x="623" y="257" width="672" height="678" key="search.everywhere.popup" timestamp="1610892322851">
       <screen x="0" y="25" width="1920" height="1055" />
     </state>
-    <state x="623" y="257" width="672" height="678" key="search.everywhere.popup/0.25.1920.1055@0.25.1920.1055" timestamp="1610814969669" />
+    <state x="623" y="257" width="672" height="678" key="search.everywhere.popup/0.25.1920.1055@0.25.1920.1055" timestamp="1610892322851" />
   </component>
 </project>

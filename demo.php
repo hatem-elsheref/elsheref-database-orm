@@ -51,7 +51,7 @@ require_once 'Database/el-sheref.php';
     $data = DB::sql('select * from users');
 # to search or write some where statements use where method
     $data = DB::table('users','id')->where('name','LIKE','hat%')->get(); // ->first()/->get()
-    $data = DB::table('users','id')->where('age','>',30)->get(); // ->first()/->get()
+//    $data = DB::table('users','id')->where('age','>',30)->get(); // ->first()/->get()
     $data = DB::table('users','id')->where('address','=','tanta')->get(); // ->first()/->get()
     $data = DB::table('users','id')->where('degree','>=',50)->get(); // ->first()/->get()
     $data = DB::table('users','id')->where('degree','<=',49)->get(); // ->first()/->get()
@@ -89,3 +89,10 @@ $data = DB::table('users','id')->orWhereNotBetween('age',10,30)->first(); // ->f
 $data = DB::table('users','id')->orWhereIn('age',[1,2,3,4,5])->get();// ->first()/->get()
 # the negation use whereNotIn method
 $data = DB::table('users','id')->orWhereIn('age',[1,2,3,4,5])->get();// ->first()/->get()
+
+# make some joins in more chains
+
+$data = DB::innerJoin('users','posts','*')->on('users.id','=','posts.user_id')
+    ->addAnotherInnerJoin('comments')->on('users.id','=','posts.id')->condition('name','=','hatem')
+    ->execute();
+

@@ -8,8 +8,9 @@ class Database implements DatabaseInterface
     private ?string $table = null;
     private ?string $PK;
     private string $sql = '';
-    private array $where = [];
     private array $select = [];
+    private array $where = [];
+    private static ?Join $join = null ;
 
     private const ALLOWED_OPERATORS=['=','!=','<>','>','>=','<','<=','LIKE'];
     private const OPERATOR_IN='IN';
@@ -19,8 +20,9 @@ class Database implements DatabaseInterface
     private const OPERATOR_AND='AND';
     private const OPERATOR_OR='OR';
 
-    public function __construct(PDO $connection){
+    public function __construct(PDO $connection,Join $join=null){
         $this->connection = $connection;
+        self::$join = $join;
     }
 
     protected function setTable($table){
@@ -116,7 +118,6 @@ class Database implements DatabaseInterface
             return false;
         }
     }
-
     public function where($column,$operation='=',$value='',$andOr=self::OPERATOR_AND){
         if (!in_array($andOr,[self::OPERATOR_AND,self::OPERATOR_OR]))
             return $this;
@@ -154,7 +155,7 @@ class Database implements DatabaseInterface
     }
 
     public function orWhere($column,$operation='=',$value=''){
-       return $this->where($column,$operation,$value,self::OPERATOR_OR);
+        return $this->where($column,$operation,$value,self::OPERATOR_OR);
     }
 
     public function orWhereIn($column,$values=[],$andOr=self::OPERATOR_AND){
@@ -172,6 +173,7 @@ class Database implements DatabaseInterface
     public function orWhereNotBetween($column,$min,$max,$andOr=self::OPERATOR_AND){
         return $this->whereNotBetween($column,$max,$max,self::OPERATOR_OR);
     }
+
 
     public function select(...$columns){
         foreach ($columns as $column)
@@ -280,5 +282,25 @@ class Database implements DatabaseInterface
             return $statement->fetchAll();
         return $result;
     }
+
+    public static function innerJoin($firstTable,$secondTable,...$columns){
+        $SQL = "SELECT ".implode(',',$columns)." FROM $firstTable INNER JOIN $secondTable ";
+        $join = (is_null(self::$join))? new Join(DB::connection()) : self::$join;
+        $join->setSqlStatement($SQL);
+        return $join;
+    }
+    public static function leftJoin($firstTable,$secondTable,...$columns){
+        $SQL = "SELECT ".implode(',',$columns)." FROM $firstTable LEFT JOIN $secondTable ";
+        $join = (is_null(self::$join))? new Join(DB::connection()) : self::$join;
+        $join->setSqlStatement($SQL);
+        return $join;
+    }
+    public static function rightJoin($firstTable,$secondTable,...$columns){
+        $SQL = "SELECT ".implode(',',$columns)." FROM $firstTable RIGHT JOIN $secondTable ";
+        $join = (is_null(self::$join))? new Join(DB::connection()) : self::$join;
+        $join->setSqlStatement($SQL);
+        return $join;
+    }
+
 
 }

@@ -12,7 +12,8 @@ class DB extends Database {
                 self::$databaseConnectionLink = new PDO($dataSourceName,$userName,$password);
                 self::$databaseConnectionLink->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
                 self::$databaseConnectionLink->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE,PDO::FETCH_OBJ);
-                self::$databaseClass = new Database(self::$databaseConnectionLink);
+                self::$databaseClass = new Database(self::$databaseConnectionLink,new Join(self::$databaseConnectionLink));
+
 
                 if (is_null(self::$databaseConnectionLink))
                     throw new Exception('Invalid Credentials');
